@@ -8,5 +8,6 @@ public enum Couleurs {
     VIOLET,
     ROSE,
     BLEU_CIEL,
-    BLEU_FONCE
+    BLEU_FONCE,
+    MARRON
 }

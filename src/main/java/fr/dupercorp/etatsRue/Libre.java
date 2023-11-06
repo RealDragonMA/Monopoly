@@ -12,7 +12,7 @@ public class Libre extends EtatRue {
 
     @Override
     public void acheterRue(Joueur joueur) {
-
+        
     }
 
     @Override

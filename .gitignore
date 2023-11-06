@@ -22,3 +22,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+.idea/gradle.xml
+*.xml
+*.xml
+.idea/libraries/Gradle__org_apiguardian_apiguardian_api_1_1_2.xml
+.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_5_9_1.xml
+.idea/libraries/Gradle__org_junit_jupiter_junit_jupiter_api_5_9_1.xml
