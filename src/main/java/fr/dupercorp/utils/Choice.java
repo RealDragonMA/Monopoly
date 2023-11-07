@@ -7,55 +7,31 @@ import java.util.function.Consumer;
 
 public class Choice {
     private String prompt;
-    private List<Runnable> options = new ArrayList<>();
+    private List<String> optionsString = new ArrayList<>();
+    private List<Consumer<Integer>> options = new ArrayList();
 
     public Choice(String prompt) {
         this.prompt = prompt;
     }
 
-    public Choice response(String option, Runnable action) {
+    public Choice response(String option, Consumer<Integer> action) {
         options.add(action);
+        optionsString.add(option);
         return this;
     }
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(prompt);
-
-        for (int i = 0; i < options.size(); i++) {
-            System.out.println((i + 1) + ". " + "Option " + (i + 1));
+        int choice = -1;
+        while (choice < 1 || choice >= options.size()+1) {
+            System.out.println(prompt);
+            for (int i = 0; i < optionsString.size(); i++) {
+                System.out.println((i+1) + " - " + optionsString.get(i));
+            }
+            System.out.println("==================================================");
+            System.out.print("Votre choix : ");
+            choice = scanner.nextInt();
         }
-
-        int userInput;
-
-        try {
-            userInput = Integer.parseInt(scanner.nextLine().trim());
-        } catch (NumberFormatException e) {
-            System.out.println("Réponse invalide. Veuillez entrer un numéro valide.");
-            scanner.close();
-            return;
-        }
-
-        if (userInput >= 1 && userInput <= options.size()) {
-            Runnable action = options.get(userInput - 1);
-            action.run();
-        } else {
-            System.out.println("Réponse invalide. Veuillez sélectionner un numéro valide.");
-        }
-
-        scanner.close();
-    }
-
-    public static void main(String[] args) {
-        Choice choice = new Choice("Que voulez-vous faire ?");
-        choice.response("Acheter", () -> {
-            System.out.println("Vous avez choisi d'acheter.");
-            // Placez votre logique pour l'achat ici
-        }).response("Rien faire", () -> {
-            System.out.println("Vous avez choisi de ne rien faire.");
-            // Placez votre logique pour ne rien faire ici
-        });
-
-        choice.run();
+        options.get(choice-1).accept(choice+1); // Passer l'indice de l'option sélectionnée
     }
 }

@@ -1,28 +1,28 @@
 package fr.dupercorp;
 
 import fr.dupercorp.abstracts.Case;
+import fr.dupercorp.abstracts.Observer;
+import fr.dupercorp.abstracts.Propriete;
 import fr.dupercorp.cases.Rue;
 import fr.dupercorp.enums.Couleurs;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Quartier {
+public class Quartier extends Observer {
 
-    private ArrayList<Case> cases;
-    private Couleurs couleur;
+    @Getter private ArrayList<Propriete> proprietes;
+    @Getter private Couleurs couleur;
 
-    public Quartier(Couleurs couleur, Case... cases) {
+    public Quartier(Couleurs couleur, Propriete... proprietes) {
         this.couleur = couleur;
-        this.cases = new ArrayList<>();
-        this.cases.addAll(List.of(cases));
+        this.proprietes = new ArrayList<>();
+        this.proprietes.addAll(List.of(proprietes));
     }
 
-    public ArrayList<Case> getCases() {
-        return cases;
-    }
+    @Override
+    public void update() {
 
-    public Couleurs getCouleur() {
-        return couleur;
     }
 }

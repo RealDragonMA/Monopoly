@@ -4,11 +4,13 @@ import fr.dupercorp.abstracts.Case;
 import fr.dupercorp.abstracts.Propriete;
 import fr.dupercorp.enums.Pions;
 import fr.dupercorp.utils.Choice;
+import fr.dupercorp.utils.CC;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Joueur {
 
@@ -25,12 +27,46 @@ public class Joueur {
         this.monopoly = monopoly;
         this.argent = 1500;
         this.position = monopoly.getPlateau().getCaseDepart();
+        this.proprietes = new ArrayList<>();
     }
 
     public void jouerTour(Des des){
-        int lancer = des.lancerDes();
-        avancer(lancer);
-        getPosition().joueurArrive(this);
+        CC.clear();
+        System.out.println("==================================================");
+        System.out.println("C'est au tour de " + CC.YELLOW + getName() + CC.RESET);
+        System.out.println("Vous êtes sur la case " + CC.GREEN + getPosition().getNom() + CC.RESET);
+        System.out.println("Vous avez " + CC.YELLOW + getArgent() + "€" + CC.RESET);
+        Choice choices = new Choice("Que voulez vous faire ?")
+            .response("Lancer les dés", (data) -> {
+                // On demande au joueur combien il veut faire au dé, on triche
+                // en lui donnant le choix entre 1 et 6
+                AtomicInteger avancement = new AtomicInteger();
+                new Choice("Combien voulez vous faire ?")
+                    .response("1", avancement::set)
+                    .response("2", avancement::set)
+                    .response("3", avancement::set)
+                    .response("4", avancement::set)
+                    .response("5", avancement::set)
+                    .response("6", avancement::set)
+                    .run();
+                // On avance le joueur
+                avancer(avancement.get());
+                System.out.println(getName() + " avance de " + avancement.get() + " cases et se retrouve sur " + getPosition().getNom());
+                getPosition().joueurArrive(this);
+            });
+
+            if(!getProprietes().isEmpty()){
+                choices.response("Voir mes propriétés", (data) -> {
+                    System.out.println("Vous avez " + getProprietes().size() + " propriétés");
+                    for (Propriete propriete : getProprietes()) {
+                        System.out.println("  - " + propriete.getNom());
+                    }
+                });
+            }
+
+            choices.response("Ne rien faire", (data) -> {
+
+            }).run();
     }
 
     public void avancer(int pas){
@@ -44,12 +80,12 @@ public class Joueur {
     public boolean proposerAchat(Propriete propriete){
         AtomicBoolean res = new AtomicBoolean(false);
         new Choice("Voulez vous acheter la propriété " )
-                .response("1 - Acheter", () -> {
-                    res.set(true);
-                })
-                .response("2 - Ne pas acheter", () -> {
-                    System.out.println("Vous n'avez pas acheté la propriété");
-                }).run();
+            .response("1 - Acheter", (data) -> {
+                res.set(true);
+            })
+            .response("2 - Ne pas acheter", (data) -> {
+                System.out.println("Vous n'avez pas acheté la propriété");
+            }).run();
         return res.get();
     }
 

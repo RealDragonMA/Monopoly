@@ -25,6 +25,7 @@ public class Monopoly {
     }
 
     public void lancerPartie(){
+        plateau.initPlateau();
         Joueur mathis = new Joueur("Mathis", Pions.DE_A_COUDRE, this);
         Joueur antoine = new Joueur("Antoine", Pions.CHAT, this);
         Joueur christine = new Joueur("Christine", Pions.CHAPEAU_HAUT_DE_FORME, this);

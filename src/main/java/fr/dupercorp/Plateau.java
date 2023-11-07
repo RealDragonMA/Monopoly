@@ -4,13 +4,14 @@ import fr.dupercorp.abstracts.Case;
 import fr.dupercorp.cases.*;
 import fr.dupercorp.enums.Couleurs;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Plateau {
 
-    @Getter private Case caseDepart;
+    @Getter @Setter private Case caseDepart;
     @Getter private ArrayList<Quartier> quartiers;
 
     public Plateau(){
@@ -74,6 +75,7 @@ public class Plateau {
         Taxe impotsRevenu = new Taxe("Impôts sur le Revenu", 200);
         Taxe taxeDeLuxe = new Taxe("Taxe de Luxe", 75);
 
+        depart.setSuivante(boulevardDeBelleville);
         boulevardDeBelleville.setSuivante(communaute1);
         communaute1.setSuivante(rueLecourbe);
         rueLecourbe.setSuivante(impotsRevenu);
@@ -123,6 +125,17 @@ public class Plateau {
         Quartier vert = new Quartier(Couleurs.VERT, avenueDeBreteuil, avenueFoch, boulevardCapucines);
         Quartier bleuCiel = new Quartier(Couleurs.BLEU_CIEL, rueDeCourcelles, rueDeVaugirard, avenueDeLaRepublique);
         Quartier marron = new Quartier(Couleurs.MARRON, boulevardDeBelleville, rueLecourbe);
+
+        quartiers.add(bleuFonce);
+        quartiers.add(rouge);
+        quartiers.add(rose);
+        quartiers.add(orange);
+        quartiers.add(jaune);
+        quartiers.add(vert);
+        quartiers.add(bleuCiel);
+        quartiers.add(marron);
+
+        setCaseDepart(depart);
 
     }
 
