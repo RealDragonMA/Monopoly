@@ -24,7 +24,7 @@ public class Joueur {
         this.pion = pion;
         this.monopoly = monopoly;
         this.argent = 1500;
-        this.position = monopoly.getPlateau().getCases().get(0);
+        this.position = monopoly.getPlateau().getCaseDepart();
     }
 
     public void jouerTour(Des des){

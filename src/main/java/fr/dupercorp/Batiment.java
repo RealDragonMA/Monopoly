@@ -7,13 +7,13 @@ public class Batiment {
     private Batiments type;
     @Getter private int prix;
 
-    Batiment(Batiments type){
+    public Batiment(Batiments type){
         this.type = type;
         switch (type){
-            case Batiments.HOTEL :
+            case HOTEL :
                 prix = 400;
                 break;
-            case Batiments.MAISON:
+            case MAISON:
                 prix = 200;
                 break;
             default:
