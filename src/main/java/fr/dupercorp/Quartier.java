@@ -1,24 +1,23 @@
 package fr.dupercorp;
 
-import fr.dupercorp.abstracts.Case;
-import fr.dupercorp.abstracts.Observer;
 import fr.dupercorp.abstracts.Propriete;
-import fr.dupercorp.cases.Gare;
-import fr.dupercorp.cases.Rue;
-import fr.dupercorp.cases.Service;
 import fr.dupercorp.enums.Couleurs;
-import fr.dupercorp.etatsRue.Constructible;
+import fr.dupercorp.interfaces.Observer;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Quartier extends Observer {
+public class Quartier implements Observer {
 
-    @Getter private ArrayList<Propriete> proprietes;
-    @Getter private Couleurs couleur;
-    @Getter @Setter private Joueur proprietaire;
+    @Getter
+    private final ArrayList<Propriete> proprietes;
+    @Getter
+    private final Couleurs couleur;
+    @Getter
+    @Setter
+    private Joueur proprietaire;
 
     public Quartier(Couleurs couleur, Propriete... proprietes) {
         this.couleur = couleur;
@@ -32,9 +31,10 @@ public class Quartier extends Observer {
     @Override
     public void update() {
         if (proprietes.isEmpty()) return; //Si le quartier n'a pas de propriété, alors il n'a pas de propriétaire
-        if (proprietes.get(0).getProprietaire() == null) return; //Si la première propriété n'a pas de propriétaire, alors le quartier n'a pas de propriétaire
+        if (proprietes.get(0).getProprietaire() == null)
+            return; //Si la première propriété n'a pas de propriétaire, alors le quartier n'a pas de propriétaire
         Joueur proprio = proprietes.get(0).getProprietaire();
-        boolean possede= true;
+        boolean possede = true;
         for (Propriete p : proprietes) {
             if (p.getProprietaire() != proprio) {
                 possede = false;
@@ -49,7 +49,7 @@ public class Quartier extends Observer {
         }
     }
 
-    int nbCasePossedee(Joueur joueur){
+    int nbCasePossedee(Joueur joueur) {
         int nbCase = 0;
         for (Propriete p : proprietes) {
             if (p.getProprietaire() == joueur) {

@@ -5,7 +5,7 @@ import fr.dupercorp.abstracts.Case;
 
 public class Taxe extends Case {
 
-    private int taxe;
+    private final int taxe;
 
     public Taxe(String nom, int taxe) {
         super(nom);

@@ -1,14 +1,18 @@
 package fr.dupercorp.abstracts;
+
+import fr.dupercorp.Joueur;
 import lombok.Getter;
 import lombok.Setter;
-import fr.dupercorp.Joueur;
 
 public abstract class Case {
 
-    @Getter private String nom;
-    @Getter @Setter private Case suivante;
+    @Getter
+    private final String nom;
+    @Getter
+    @Setter
+    private Case suivante;
 
-    public Case(String nom){
+    public Case(String nom) {
         this.nom = nom;
     }
 

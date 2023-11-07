@@ -22,14 +22,14 @@ public class Libre extends EtatRue {
 
     @Override
     public void payerLoyer(Joueur joueur) {
-
+        
     }
 
     @Override
     public void joueurArrive(Joueur joueur) {
         boolean achat = false;
         achat = joueur.proposerAchat(getRue());
-        if (achat){
+        if (achat) {
             joueur.payerBanque(getRue().getPrix());
             joueur.ajoutPropriete(getRue());
             getRue().setProprietaire(joueur);

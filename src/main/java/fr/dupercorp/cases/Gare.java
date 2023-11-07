@@ -6,7 +6,7 @@ import fr.dupercorp.abstracts.Propriete;
 
 public class Gare extends Propriete {
 
-    public Gare(String nom, int loyer, int ...loyers) {
+    public Gare(String nom, int loyer, int... loyers) {
         super(nom, loyer, loyers);
     }
 

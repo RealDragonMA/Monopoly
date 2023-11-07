@@ -6,7 +6,7 @@ import fr.dupercorp.abstracts.Propriete;
 
 public class Service extends Propriete {
 
-    public Service(String nom, int loyer, int ...loyers) {
+    public Service(String nom, int loyer, int... loyers) {
         super(nom, loyer, loyers);
     }
 

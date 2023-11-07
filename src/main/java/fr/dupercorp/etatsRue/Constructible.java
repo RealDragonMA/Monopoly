@@ -14,7 +14,7 @@ public class Constructible extends EtatRue {
     @Override
     public void acheterMaison(Joueur joueur) {
         Batiment maison = new Batiment(Batiments.MAISON);
-        if(joueur == getRue().getProprietaire()){
+        if (joueur == getRue().getProprietaire()) {
             joueur.payerBanque(maison.getPrix());
         }
         getRue().addBatiment(maison);

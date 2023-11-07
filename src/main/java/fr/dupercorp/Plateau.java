@@ -6,20 +6,22 @@ import fr.dupercorp.enums.Couleurs;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Plateau {
 
-    @Getter @Setter private Case caseDepart;
-    @Getter private ArrayList<Quartier> quartiers;
+    @Getter
+    @Setter
+    private Case caseDepart;
+    @Getter
+    private final ArrayList<Quartier> quartiers;
 
-    public Plateau(){
+    public Plateau() {
         this.quartiers = new ArrayList<>();
         initPlateau();
     }
 
-    public void initPlateau(){
+    public void initPlateau() {
 
         // Instanciation de toutes les cases du Monopoly classique avec les loyers initiaux
 

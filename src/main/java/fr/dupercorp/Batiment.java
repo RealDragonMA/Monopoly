@@ -2,15 +2,17 @@ package fr.dupercorp;
 
 import fr.dupercorp.enums.Batiments;
 import lombok.Getter;
+
 public class Batiment {
 
-    private Batiments type;
-    @Getter private int prix;
+    private final Batiments type;
+    @Getter
+    private final int prix;
 
-    public Batiment(Batiments type){
+    public Batiment(Batiments type) {
         this.type = type;
-        switch (type){
-            case HOTEL :
+        switch (type) {
+            case HOTEL:
                 prix = 400;
                 break;
             case MAISON:

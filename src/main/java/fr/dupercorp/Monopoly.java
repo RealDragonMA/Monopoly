@@ -8,12 +8,17 @@ import java.util.ArrayList;
 
 public class Monopoly {
 
-    @Getter private ArrayList<Joueur> joueurs;
-    @Getter @Setter private Joueur joueurCourant;
-    @Getter private Des des;
-    @Getter private Plateau plateau;
+    @Getter
+    private final ArrayList<Joueur> joueurs;
+    @Getter
+    @Setter
+    private Joueur joueurCourant;
+    @Getter
+    private final Des des;
+    @Getter
+    private final Plateau plateau;
 
-    public Monopoly(){
+    public Monopoly() {
         this.joueurs = new ArrayList<>();
         this.des = new Des();
         this.plateau = new Plateau();
@@ -24,7 +29,7 @@ public class Monopoly {
         monopoly.lancerPartie();
     }
 
-    public void lancerPartie(){
+    public void lancerPartie() {
         plateau.initPlateau();
         Joueur mathis = new Joueur("Mathis", Pions.DE_A_COUDRE, this);
         Joueur antoine = new Joueur("Antoine", Pions.CHAT, this);
@@ -33,14 +38,14 @@ public class Monopoly {
         joueurs.add(antoine);
         joueurs.add(christine);
         joueurCourant = mathis;
-        while(!partieFinie()) jouer();
+        while (!partieFinie()) jouer();
     }
 
-    public boolean partieFinie(){
+    public boolean partieFinie() {
         return false;
     }
 
-    public void jouer(){
+    public void jouer() {
         joueurCourant.jouerTour(des);
         setJoueurCourant(getJoueurs().get((getJoueurs().indexOf(getJoueurCourant()) + 1) % getJoueurs().size()));
     }
