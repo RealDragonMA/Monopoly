@@ -24,4 +24,9 @@ public class Achetee extends EtatRue {
     public void payerLoyer(Joueur joueur) {
         joueur.payerJoueur(getRue().getProprietaire(), getRue().getLoyerCourant());
     }
+
+    @Override
+    public void joueurArrive(Joueur joueur) {
+
+    }
 }

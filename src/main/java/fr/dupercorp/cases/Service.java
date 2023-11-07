@@ -1,6 +1,7 @@
 package fr.dupercorp.cases;
 
 import fr.dupercorp.Joueur;
+import fr.dupercorp.Quartier;
 import fr.dupercorp.abstracts.Propriete;
 
 public class Service extends Propriete {
@@ -16,6 +17,11 @@ public class Service extends Propriete {
 
     @Override
     public void acheter(Joueur joueur) {
+
+    }
+
+    @Override
+    public void update(Quartier quartier) {
 
     }
 

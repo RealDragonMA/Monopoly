@@ -1,4 +1,5 @@
 package fr.dupercorp.abstracts;
+import fr.dupercorp.Quartier;
 import lombok.Getter;
 import lombok.Setter;
 import fr.dupercorp.Joueur;
@@ -8,9 +9,9 @@ public abstract class Propriete extends Case {
 
     @Getter private int prix;
     @Getter private int loyer;
-    @Getter private int loyerCourant;
+    @Getter @Setter private int loyerCourant;
     @Getter private ArrayList<Integer> loyers;
-    @Getter private Joueur proprietaire;
+    @Getter @Setter private Joueur proprietaire;
 
     public Propriete(String nom, int loyer, int... loyers) {
         super(nom);
@@ -23,6 +24,6 @@ public abstract class Propriete extends Case {
 
     public abstract void acheter(Joueur joueur);
 
-
+    public abstract void update(Quartier quartier);
 
 }
