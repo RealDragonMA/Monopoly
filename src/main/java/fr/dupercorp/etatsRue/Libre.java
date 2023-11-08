@@ -23,7 +23,7 @@ public class Libre extends EtatRue {
 
     @Override
     public void payerLoyer(Joueur joueur) {
-        
+
     }
 
     @Override
@@ -33,10 +33,9 @@ public class Libre extends EtatRue {
             joueur.payerBanque(getRue().getPrix());
             joueur.ajoutPropriete(getRue());
             getRue().setProprietaire(joueur);
-            getRue().setEtatRue(new Achetee(getRue()));
-            getRue().setLoyerCourant(getRue().getLoyers().get(2));
             System.out.println(CC.GREEN + "Vous avez acheté la rue " + getRue().getNom() + CC.RESET);
             //appel methode notify de la class abstraite de Subject
+            getRue().notifyObservers(joueur);
         }
     }
 }

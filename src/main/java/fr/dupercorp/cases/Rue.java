@@ -34,17 +34,12 @@ public class Rue extends Propriete {
     }
 
     @Override
-    public void acheter(Joueur joueur) {
-
-    }
-
-    @Override
     public void update(Quartier quartier) {
-        //si il y a un proprietaire au quartier alors rue au moins constructible
+        //s'il y a un propriétaire au quartier alors rue au moins constructible
         if (quartier.getProprietaire() != null) {
             this.setEtatRue(new Constructible(this));
             this.setLoyerCourant(this.getLoyers().get(2));
-            if (getBatiments().size() == 5){
+            if (getBatiments().size() >= 5){
                 this.setEtatRue(new AuMax(this));
                 this.setLoyerCourant(this.getLoyers().get(getLoyers().size()-1));
             }

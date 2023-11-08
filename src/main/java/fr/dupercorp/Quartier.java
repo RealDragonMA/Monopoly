@@ -30,6 +30,7 @@ public class Quartier implements Observer {
     //Si oui, alors le joueur possède le quartier
     @Override
     public void update() {
+        System.out.printf("Update du quartier %s%n", couleur);
         if (proprietes.isEmpty()) return; //Si le quartier n'a pas de propriété, alors il n'a pas de propriétaire
         if (proprietes.get(0).getProprietaire() == null)
             return; //Si la première propriété n'a pas de propriétaire, alors le quartier n'a pas de propriétaire
@@ -49,13 +50,13 @@ public class Quartier implements Observer {
         }
     }
 
-    int nbCasePossedee(Joueur joueur) {
-        int nbCase = 0;
-        for (Propriete p : proprietes) {
-            if (p.getProprietaire() == joueur) {
-                nbCase++;
-            }
-        }
-        return nbCase;
-    }
+//    int nbCasePossedee(Joueur joueur) {
+//        int nbCase = 0;
+//        for (Propriete p : proprietes) {
+//            if (p.getProprietaire() == joueur) {
+//                nbCase++;
+//            }
+//        }
+//        return nbCase;
+//    }
 }

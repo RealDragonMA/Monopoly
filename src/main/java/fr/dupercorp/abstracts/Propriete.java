@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class Propriete extends Case implements Subject {
 
@@ -38,9 +39,6 @@ public abstract class Propriete extends Case implements Subject {
         for (int j : loyers) this.loyers.add(j);
     }
 
-
-    public abstract void acheter(Joueur joueur);
-
     public abstract void update(Quartier quartier);
 
     @Override
@@ -55,7 +53,9 @@ public abstract class Propriete extends Case implements Subject {
 
     @Override
     public void notifyObservers(Joueur joueur) {
+        System.out.printf("Notifying %d observers%n", observers.size());
         for (Observer o : observers) {
+            System.out.printf("Notifying %s%n", o.getClass().getSimpleName());
             o.update();
         }
     }

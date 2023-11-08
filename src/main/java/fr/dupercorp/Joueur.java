@@ -73,7 +73,7 @@ public class Joueur {
             choices.response("Voir mes propriétés", (data) -> {
                 System.out.println("Vous avez " + getProprietes().size() + " propriétés:");
                 for (Propriete propriete : getProprietes()) {
-                    System.out.println("  - " + propriete.getNom());
+                    System.out.println("  - " + propriete.getNom() + CC.GREEN + " ( "+propriete.getLoyerCourant()+"€ )" + CC.RESET);
                 }
                 System.out.println("==================================================");
                 choices.run();

@@ -38,6 +38,7 @@ public class Plateau {
         Rue boulevardCapucines = new Rue("Boulevard des capucines", 320, 28, 150, 450, 1000, 1200, 1400);
         Rue rueDeCourcelles = new Rue("Rue de Courcelles", 180, 14, 70, 200, 550, 750, 950);
         Rue rueDeVaugirard = new Rue("Rue de Vaugirard", 180, 14, 70, 200, 550, 750, 950);
+        Rue boulevardDeLaVillette = new Rue("Boulevard de la Villette", 200, 16, 80, 220, 600, 800, 1000);
         Rue avenueDeNeuilly = new Rue("Avenue de Neuilly", 200, 16, 80, 220, 600, 800, 1000);
         Rue rueDeParadis = new Rue("Rue de Paradis", 220, 18, 90, 250, 700, 875, 1050);
         Rue avenueDeLaRepublique = new Rue("Avenue de la République", 220, 18, 90, 250, 700, 875, 1050);
@@ -87,8 +88,8 @@ public class Plateau {
         chance1.setSuivante(rueDeCourcelles);
         rueDeCourcelles.setSuivante(avenueDeLaRepublique);
         avenueDeLaRepublique.setSuivante(prison);
-        prison.setSuivante(boulevardDeBelleville);
-        boulevardDeBelleville.setSuivante(compagnieElectricite);
+        prison.setSuivante(boulevardDeLaVillette);
+        boulevardDeLaVillette.setSuivante(compagnieElectricite);
         compagnieElectricite.setSuivante(avenueDeNeuilly);
         avenueDeNeuilly.setSuivante(rueDeParadis);
         rueDeParadis.setSuivante(gareDeLyon);
