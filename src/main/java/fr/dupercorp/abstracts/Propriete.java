@@ -30,8 +30,9 @@ public abstract class Propriete extends Case implements Subject {
 
     public Propriete(String nom, int loyer, int... loyers) {
         super(nom);
-        this.loyer = loyer;
-        this.loyerCourant = loyer;
+        this.prix = loyer;
+        this.loyer = loyers[0];
+        this.loyerCourant = loyers[0];
         this.loyers = new ArrayList<>();
         this.observers = new ArrayList<>();
         for (int j : loyers) this.loyers.add(j);

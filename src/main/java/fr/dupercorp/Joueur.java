@@ -50,12 +50,18 @@ public class Joueur {
                     // en lui donnant le choix entre 1 et 6
                     AtomicInteger avancement = new AtomicInteger();
                     new Choice("Combien voulez vous faire ?")
-                            .response("1", avancement::set)
-                            .response("2", avancement::set)
-                            .response("3", avancement::set)
-                            .response("4", avancement::set)
-                            .response("5", avancement::set)
-                            .response("6", avancement::set)
+                            .response("", avancement::set)
+                            .response("", avancement::set)
+                            .response("", avancement::set)
+                            .response("", avancement::set)
+                            .response("", avancement::set)
+                            .response("", avancement::set)
+                            .response("", avancement::set)
+                            .response("", avancement::set)
+                            .response("", avancement::set)
+                            .response("", avancement::set)
+                            .response("", avancement::set)
+                            .response("", avancement::set)
                             .run();
                     // On avance le joueur
                     avancer(avancement.get());
@@ -65,10 +71,12 @@ public class Joueur {
 
         if (!getProprietes().isEmpty()) {
             choices.response("Voir mes propriétés", (data) -> {
-                System.out.println("Vous avez " + getProprietes().size() + " propriétés");
+                System.out.println("Vous avez " + getProprietes().size() + " propriétés:");
                 for (Propriete propriete : getProprietes()) {
                     System.out.println("  - " + propriete.getNom());
                 }
+                System.out.println("==================================================");
+                choices.run();
             });
         }
 
@@ -87,13 +95,13 @@ public class Joueur {
 
     public boolean proposerAchat(Propriete propriete) {
         AtomicBoolean res = new AtomicBoolean(false);
-        new Choice("Voulez vous acheter la propriété ")
-                .response("1 - Acheter", (data) -> {
-                    res.set(true);
-                })
-                .response("2 - Ne pas acheter", (data) -> {
-                    System.out.println("Vous n'avez pas acheté la propriété");
-                }).run();
+        new Choice("Voulez vous acheter la propriété, elle coutera " + CC.YELLOW + propriete.getPrix() + "€" + CC.RESET)
+            .response("Acheter", (data) -> {
+                res.set(true);
+            })
+            .response("Ne pas acheter", (data) -> {
+                System.out.println("Vous n'avez pas acheté la propriété");
+            }).run();
         return res.get();
     }
 

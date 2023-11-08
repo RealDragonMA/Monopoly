@@ -26,7 +26,7 @@ public class Plateau {
         // Instanciation de toutes les cases du Monopoly classique avec les loyers initiaux
 
         // Cases "Rue"
-        Rue rueDeLaPaix = new Rue("Rue de la Paix", 350, 35, 175, 500, 1100, 1300, 1500);
+        Rue rueDeLaPaix = new Rue("Rue de la Paix",350, 35, 175, 500, 1100, 1300, 1500);
         Rue avenueDesChampsElysees = new Rue("Avenue des Champs-Élysées", 350, 35, 175, 500, 1100, 1300, 1500);
         Rue rueHenriMartin = new Rue("Rue Henri-Martin", 60, 2, 10, 30, 90, 160, 250);
         Rue boulevardMalesherbes = new Rue("Boulevard Malesherbes", 80, 4, 20, 60, 180, 320, 450);

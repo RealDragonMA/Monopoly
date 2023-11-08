@@ -32,6 +32,6 @@ public class Choice {
             System.out.print("Votre choix : ");
             choice = scanner.nextInt();
         }
-        options.get(choice - 1).accept(choice + 1); // Passer l'indice de l'option sélectionnée
+        options.get(choice - 1).accept(choice); // Passer l'indice de l'option sélectionnée
     }
 }
