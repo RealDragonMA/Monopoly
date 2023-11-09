@@ -27,6 +27,7 @@ public class Achetee extends EtatRue {
 
     @Override
     public void joueurArrive(Joueur joueur) {
-
+        System.out.println(getRue().getNom() + " appartient à " + getRue().getProprietaire().getName() + ", vous payer " + getRue().getLoyerCourant() + "€ de loyer");
+        payerLoyer(joueur);
     }
 }

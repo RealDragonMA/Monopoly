@@ -35,21 +35,27 @@ public class Rue extends Propriete {
 
     @Override
     public void update(Quartier quartier) {
+        System.out.println("UPDATE DE LA RUE");
         //s'il y a un propriétaire au quartier alors rue au moins constructible
         if (quartier.getProprietaire() != null) {
             this.setEtatRue(new Constructible(this));
-            this.setLoyerCourant(this.getLoyers().get(2));
+            if (batiments.isEmpty()){
+                this.setLoyerCourant(this.getLoyers().get(0)*2);
+            }else{
+                this.setLoyerCourant(this.getLoyers().get(batiments.size()));
+            }
             if (getBatiments().size() >= 5){
                 this.setEtatRue(new AuMax(this));
                 this.setLoyerCourant(this.getLoyers().get(getLoyers().size()-1));
             }
         } else if (this.getProprietaire() != null) {
-            this.setEtatRue(new Libre(this));
-            this.setLoyerCourant(this.getLoyers().get(1));
-        }else{
             this.setEtatRue(new Achetee(this));
             this.setLoyerCourant(this.getLoyers().get(0));
+        }else{
+            this.setEtatRue(new Libre(this));
+            this.setLoyerCourant(this.getLoyer());
         }
+        System.out.println("Le loyer passe à "+getLoyer());
     }
 
     public void addBatiment(Batiment batiment) {

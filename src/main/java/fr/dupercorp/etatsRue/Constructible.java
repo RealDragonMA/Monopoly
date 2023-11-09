@@ -18,6 +18,7 @@ public class Constructible extends EtatRue {
             joueur.payerBanque(maison.getPrix());
         }
         getRue().addBatiment(maison);
+        getRue().notifyObservers(joueur);
     }
 
     @Override
@@ -32,6 +33,8 @@ public class Constructible extends EtatRue {
 
     @Override
     public void joueurArrive(Joueur joueur) {
-
+        System.out.println(getRue().getNom() + " appartient à " + getRue().getProprietaire().getName() + ", vous payer " + getRue().getLoyerCourant() + "€ de loyer");
+        System.out.println("Il possède " + getRue().getBatiments().size() + " batiments");
+        payerLoyer(joueur);
     }
 }

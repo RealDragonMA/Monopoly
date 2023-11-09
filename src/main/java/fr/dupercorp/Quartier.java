@@ -32,8 +32,7 @@ public class Quartier implements Observer {
     public void update() {
         System.out.printf("Update du quartier %s%n", couleur);
         if (proprietes.isEmpty()) return; //Si le quartier n'a pas de propriété, alors il n'a pas de propriétaire
-        if (proprietes.get(0).getProprietaire() == null)
-            return; //Si la première propriété n'a pas de propriétaire, alors le quartier n'a pas de propriétaire
+        System.out.println("Le quartier a des propriétés");
         Joueur proprio = proprietes.get(0).getProprietaire();
         boolean possede = true;
         for (Propriete p : proprietes) {

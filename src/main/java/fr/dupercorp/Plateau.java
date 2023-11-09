@@ -1,6 +1,7 @@
 package fr.dupercorp;
 
 import fr.dupercorp.abstracts.Case;
+import fr.dupercorp.abstracts.Propriete;
 import fr.dupercorp.cases.*;
 import fr.dupercorp.enums.Couleurs;
 import lombok.Getter;
@@ -119,7 +120,7 @@ public class Plateau {
         taxeDeLuxe.setSuivante(rueDeLaPaix);
         rueDeLaPaix.setSuivante(depart);
 
-        // Ajout des quartiers
+        // Ajout des quartiers = Observeurs
         Quartier bleuFonce = new Quartier(Couleurs.BLEU_FONCE, rueDeLaPaix, avenueDesChampsElysees);
         Quartier rouge = new Quartier(Couleurs.ROUGE, rueHenriMartin, boulevardMalesherbes, avenueMatignon);
         Quartier rose = new Quartier(Couleurs.ROSE, rueDeParadis, avenueDeNeuilly, boulevardDeBelleville);
@@ -129,6 +130,12 @@ public class Plateau {
         Quartier bleuCiel = new Quartier(Couleurs.BLEU_CIEL, rueDeCourcelles, rueDeVaugirard, avenueDeLaRepublique);
         Quartier marron = new Quartier(Couleurs.MARRON, boulevardDeBelleville, rueLecourbe);
 
+        // Quartiers gares et services
+        Quartier gares = new Quartier(Couleurs.VIOLET, gareDuNord, gareDeLyon, gareSaintLazare, gareMontparnasse);
+        Quartier services = new Quartier(Couleurs.BLANC, compagnieElectricite, compagnieEaux);
+
+        setCaseDepart(depart);
+
         quartiers.add(bleuFonce);
         quartiers.add(rouge);
         quartiers.add(rose);
@@ -137,8 +144,15 @@ public class Plateau {
         quartiers.add(vert);
         quartiers.add(bleuCiel);
         quartiers.add(marron);
+        quartiers.add(gares);
+        quartiers.add(services);
 
-        setCaseDepart(depart);
+        // Register observers to subjects
+        for (Quartier q : quartiers) {
+            for (Propriete p : q.getProprietes()) {
+                p.attach(q);
+            }
+        }
 
     }
 

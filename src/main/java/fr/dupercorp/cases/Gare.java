@@ -25,15 +25,16 @@ public class Gare extends Propriete {
                 notifyObservers(joueur);
             }
         } else if (getProprietaire() != joueur) {
-            joueur.donneArgent(getLoyerCourant());
-            getProprietaire().recoisArgent(getLoyerCourant());
+            joueur.payerJoueur(getProprietaire(), getLoyerCourant());
+            System.out.println(getNom() + " appartient à " + getProprietaire().getName() + ", vous payer " + getLoyerCourant() + "€ de loyer");
         }
+        notifyObservers(joueur);
     }
 
     @Override
     public void update(Quartier quartier) {
         if (getProprietaire() == null){
-            setLoyerCourant(getLoyers().get(0));
+            setLoyerCourant(getLoyer());
         }else{
             AtomicInteger nbSame = new AtomicInteger();
             quartier.getProprietes().forEach(elem->{
@@ -41,7 +42,7 @@ public class Gare extends Propriete {
                      nbSame.addAndGet(1);
                }
             });
-            setLoyerCourant(getLoyers().get(nbSame.get()));
+            setLoyerCourant(getLoyers().get(nbSame.get()-1));
         }
     }
 }

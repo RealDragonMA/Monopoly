@@ -43,7 +43,8 @@ public abstract class Propriete extends Case implements Subject {
 
     @Override
     public void attach(Observer observer) {
-        observers.add(observer);
+        if(observer == null) throw new NullPointerException("Observer cannot be null");
+        if(!observers.contains(observer)) observers.add(observer);
     }
 
     @Override
