@@ -168,4 +168,8 @@ public class Joueur {
         this.donneArgent(somme);
         joueur.recoisArgent(somme);
     }
+
+    public int lanceDes() {
+        monopoly.getDes().lancerDes();
+    }
 }

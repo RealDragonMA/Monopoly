@@ -31,7 +31,7 @@ public class Service extends Propriete {
             }
         } else if (getProprietaire() != joueur) {
             // On lance les dés, si le propriétaire n'a qu'un service, on multiplie par 4, sinon par 10
-            int des = joueur.getMonopoly().getDes().lancerDes();
+            int des = joueur.lanceDes();
             int loyer = getLoyerCourant() * des;
             joueur.payerJoueur(getProprietaire(), loyer);
             System.out.println(getNom() + " appartient à " + getProprietaire().getName());
