@@ -41,6 +41,7 @@ public class Joueur {
 
     public void jouerTour(Des des) {
         CC.clear();
+        AtomicBoolean hasBuyHouse = new AtomicBoolean(false);
         System.out.println("==================================================");
         System.out.println("C'est au tour de " + CC.YELLOW + getName() + CC.RESET);
         System.out.println("Vous êtes sur la case " + CC.GREEN + getPosition().getNom() + CC.RESET);
@@ -79,7 +80,7 @@ public class Joueur {
                     quartiers.add(quartier);
                 }
             }
-            if (!quartiers.isEmpty()) {
+            if (!quartiers.isEmpty() && !hasBuyHouse.get()) {
                 choices.response("Acheter une maison", (data) -> {
                     Choice quartierChoice = new Choice("Sur quel quartier voulez vous acheter une maison ?");
                     for (Quartier quartier : quartiers) {
@@ -102,7 +103,11 @@ public class Joueur {
                                 }
                                 for (Rue rue : rues) {
                                     if (rue.getBatiments().size() == min) {
-                                        rueChoice.response(rue.getNom(), (data3) -> rue.getEtatRue().acheterMaison(this));
+                                        rueChoice.response(rue.getNom(), (data3) -> {
+                                            rue.getEtatRue().acheterMaison(this);
+                                            hasBuyHouse.set(true);
+                                            choices.run();
+                                        });
                                     }
                                 }
                                 rueChoice.run();
