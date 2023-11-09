@@ -156,10 +156,6 @@ public class Joueur {
         proprietes.add(propriete);
     }
 
-    public void finirLeTour() {
-        System.out.println("Votre tour est fini");
-    }
-
     public void recoisArgent(int somme) {
         setArgent(argent + somme);
     }

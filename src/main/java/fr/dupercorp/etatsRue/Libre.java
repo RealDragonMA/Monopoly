@@ -17,11 +17,6 @@ public class Libre extends EtatRue {
     }
 
     @Override
-    public void acheterRue(Joueur joueur) {
-
-    }
-
-    @Override
     public void payerLoyer(Joueur joueur) {
 
     }

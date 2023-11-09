@@ -22,11 +22,6 @@ public class Constructible extends EtatRue {
     }
 
     @Override
-    public void acheterRue(Joueur joueur) {
-
-    }
-
-    @Override
     public void payerLoyer(Joueur joueur) {
         joueur.payerJoueur(getRue().getProprietaire(), getRue().getLoyerCourant());
     }

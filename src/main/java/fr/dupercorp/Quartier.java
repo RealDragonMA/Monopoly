@@ -48,14 +48,4 @@ public class Quartier implements Observer {
             p.update(this);
         }
     }
-
-//    int nbCasePossedee(Joueur joueur) {
-//        int nbCase = 0;
-//        for (Propriete p : proprietes) {
-//            if (p.getProprietaire() == joueur) {
-//                nbCase++;
-//            }
-//        }
-//        return nbCase;
-//    }
 }
